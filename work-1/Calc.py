@@ -38,17 +38,20 @@ def get_num_only(p_ch):
 
 
 def is_it_num_or_float(p_num):
-    try:
-        if p_num.isdigit():
-            return True
-        elif p_num == "":
-            print("Хах, сработала защита от дураков)")
-            return False
-        else:
-            x = float(p_num)
+    if p_num.isdigit():
         return True
-    except ValueError:
-        print("Сори, но только int или float")
+    elif p_num == "":
+        print("Хах, сработала защита от дураков)")
+        return False
+    x = ""
+    for i in str(p_num):
+        if i not in ".,":
+            x += i
+    if x.isdigit():
+        return True
+    print("Сори, но только int или float")
+    print("Давайте всё таки введём число.")
+    return False
 
 
 def get_num_or_float(p_ch):
@@ -140,6 +143,20 @@ def is_norm_number(p_ch1, p_ch2):
         print("Извините, мы переводим только целые числа и числа которые можно перевести.")
 
 
+
+def koren(ch1):
+    if float(ch1) >= 0:
+        ch1 = float(ch1)
+        if ch1 % 1 == 0:
+            ch1 = int(ch1)
+        s = ch1 ** 0.5
+        if s % 1 == 0:
+            s = int(s)
+        print("√" + str(ch1), "=", s)
+    else:
+        print("Нет корней, т.к. ОНО ОТРИЦАТЕЛЬНОЕ")
+
+
 while "да" in otvet or "y" in otvet or otvet == "" or "ана" in otvet or "АНА" in otvet or "Ана" in otvet \
         or otvet == "" or "возможно" in otvet or "0" in otvet:
     if "возможно" in otvet or "0" in otvet:
@@ -149,9 +166,6 @@ while "да" in otvet or "y" in otvet or otvet == "" or "ана" in otvet or "А
         print("")
         num_to_check = input("Введите число для анализа: ")
         num_to_check = get_num_only(num_to_check)
-#        while not is_it_num(num_to_check):
-#            print("Это не число -_-")
-#            num_to_check = input("Введите ЧИСЛО для анализа: ")
 
         what_is_there(num_to_check)
         easy_num(num_to_check)
@@ -167,22 +181,18 @@ while "да" in otvet or "y" in otvet or otvet == "" or "ана" in otvet or "А
             ch2 = get_num_only(ch2)
             is_norm_number(ch1, ch2)
         elif "√" in symbol or "корен" in symbol or "Корен" in symbol or "8" in symbol:
-            if float(ch1) >= 0:
-                ch1 = float(ch1)
-                if ch1 % 1 == 0:
-                    kon = int(ch1)
-                print("√" + str(ch1), "=", ch1 ** 0.5)
-            else:
-                print("Нет корней, т.к. ОНО ОТРИЦАТЕЛЬНОЕ")
+            koren(ch1)
         else:
             ch1 = float(ch1)
             ch2 = input("Введите второе число: ")
             ch2 = get_num_or_float(ch2)
             ch2 = float(ch2)
+
             if ch1 % 1 == 0:
                 ch1 = int(ch1)
             if ch2 % 1 == 0:
                 ch2 = int(ch2)
+
             if "+" in symbol or "1" in symbol:
                 kon = float(ch1) + float(ch2)
                 if kon % 1 == 0:
