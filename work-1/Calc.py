@@ -52,7 +52,7 @@ def is_it_num_or_float(p_num):
     for i in str(p_num):
         if i not in ".,":
             x += i
-    if x.isdigit():
+    if x.isdigit() or x[0] == "-" and x[1:].isdigit():
         return True
     print("Сори, но только int или float")
     print("Давайте всё таки введём число.")
