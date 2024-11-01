@@ -1,5 +1,5 @@
 print("Привет!")
-print(" ")
+print("")
 
 
 def my_vozmognoste():
@@ -13,13 +13,18 @@ def my_vozmognoste():
     print("7. возведение в степень  --------------->     **")
     print("8. квадратный корень числа  ------------->    8 (√)")
     print("9. перевод в десятичную cист.  ----------->   9")
-    print(" ")
+    print("")
 
 
-print("Если хотите воспользоваться калькулятором - нажмите Enter или введите 'да'.")
-print("Так же, вы может произвести АНАЛИЗ числа (введя 'анализ')")
-print("               или узнать возможности калькулятора (введя 'возможности' или '0').")
-otvet = input()
+def a_esli():
+    print("")
+    print("Если хотите воспользоваться калькулятором - нажмите Enter или введите 'да'.")
+    print("Так же, вы может произвести АНАЛИЗ числа (введя 'анализ').")
+    print("               Возможности калькулятора будут всегда перед вами).")
+    return input()
+
+
+otvet = a_esli()
 
 
 def is_it_num(p_num):
@@ -158,9 +163,7 @@ def koren(ch1):
 
 
 while "да" in otvet or "y" in otvet or otvet == "" or "ана" in otvet or "АНА" in otvet or "Ана" in otvet \
-        or otvet == "" or "возможно" in otvet or "0" in otvet:
-    if "возможно" in otvet or "0" in otvet:
-        my_vozmognoste()
+        or otvet == "" or "0" in otvet:
 
     if "Ана" in otvet or "ана" in otvet or "АНА" in otvet:
         print("")
@@ -194,28 +197,28 @@ while "да" in otvet or "y" in otvet or otvet == "" or "ана" in otvet or "А
                 ch2 = int(ch2)
 
             if "+" in symbol or "1" in symbol:
-                kon = float(ch1) + float(ch2)
+                kon = ch1 + ch2
                 if kon % 1 == 0:
                     kon = int(kon)
                 print(ch1, "+", ch2, "=", kon)
             elif "-" in symbol or "2" in symbol:
-                kon = float(ch1) - float(ch2)
+                kon = ch1 - ch2
                 if kon % 1 == 0:
                     kon = int(kon)
                 print(ch1, "-", ch2, "=", kon)
             elif "**" in symbol or "7" in symbol:
-                kon = float(ch1) ** float(ch2)
+                kon = ch1 ** ch2
                 if kon % 1 == 0:
                     kon = int(kon)
                 print(ch1, "**", ch2, "=", kon)
             elif "*" in symbol or "3" in symbol:
-                kon = float(ch1) * float(ch2)
+                kon = ch1 * ch2
                 if kon % 1 == 0:
                     kon = int(kon)
                 print(ch1, "*", ch2, "=", kon)
             elif "//" in symbol or "5" in symbol:
                 if ch2 != 0:
-                    kon = float(ch1) // float(ch2)
+                    kon = ch1 // ch2
                     if kon % 1 == 0:
                         kon = int(kon)
                     print(ch1, "//", ch2, "=", kon)
@@ -223,7 +226,7 @@ while "да" in otvet or "y" in otvet or otvet == "" or "ана" in otvet or "А
                     print("На ноль делить НИЗЯЯЯЯ!")
             elif "/" in symbol or "4" in symbol:
                 if ch2 != 0:
-                    kon = float(ch1) / float(ch2)
+                    kon = ch1 / ch2
                     if kon % 1 == 0 or kon == "":
                         kon = int(kon)
                     print(ch1, "/", ch2, "=", kon)
@@ -232,7 +235,7 @@ while "да" in otvet or "y" in otvet or otvet == "" or "ана" in otvet or "А
                     print(" ")
             elif "%" in symbol or "6" in symbol:
                 if ch2 != 0:
-                    kon = float(ch1) % float(ch2)
+                    kon = ch1 % ch2
                     if kon % 1 == 0:
                         kon = int(kon)
                     print(ch1, "%", ch2, "=", kon)
@@ -240,9 +243,6 @@ while "да" in otvet or "y" in otvet or otvet == "" or "ана" in otvet or "А
                     print("Даже так нельзя делить на ноль(")
             else:
                 print("Серьёзно? Я не знаю такого действия...(")
-    print("")
-    print("Если хотите воспользоваться калькулятором - нажмите Enter или введите 'да'.")
-    print("Так же, вы может произвести АНАЛИЗ числа (введя 'анализ')")
-    print("                или узнать возможности калькулятора (введя 'возможности' или '0').")
-    otvet = input()
+
+    otvet = a_esli()
 print("Всего доброго ._.")
