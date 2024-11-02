@@ -148,7 +148,6 @@ def is_norm_number(p_ch1, p_ch2):
         print("Извините, мы переводим только целые числа и числа которые можно перевести.")
 
 
-
 def koren(ch1):
     if float(ch1) >= 0:
         ch1 = float(ch1)
